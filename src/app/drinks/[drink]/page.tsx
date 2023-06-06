@@ -2,7 +2,6 @@ import CocktailById from '@/components/CocktailById'
 import { Cocktail } from '@/components/DailyCocktail'
 import { getCocktailById } from '@/lib/getCocktailById'
 import { getIngredientsAndMeasures } from '@/lib/getIngredientsAndMeasures'
-import { FC } from 'react'
 
 interface DrinkProps {
   params: {

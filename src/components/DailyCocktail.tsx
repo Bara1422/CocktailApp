@@ -72,7 +72,15 @@ export const DailyCocktail = async () => {
 
             <div className='text-start w-1/2'>
               <h5 className='text-xl font-semibold mb-1'>Tags</h5>
-              <p>{resCocktail.strTags ?? 'No tags'}</p>
+              <p className='flex flex-row flex-wrap gap-1 '>
+                {resCocktail.strTags?.split(',').map((drink) => {
+                  return (
+                    <span key={drink} className='border p-1 rounded-md'>
+                      {drink}
+                    </span>
+                  )
+                }) ?? 'No tags'}
+              </p>
             </div>
           </div>
         </div>

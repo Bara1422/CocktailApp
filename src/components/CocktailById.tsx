@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Cocktail } from './DailyCocktail'
 import Image from 'next/image'
 import { getIngredientsAndMeasures } from '@/lib/getIngredientsAndMeasures'
+import Link from 'next/link'
 
 interface CocktailByIdProps {
   drinks: Cocktail
@@ -14,6 +15,7 @@ const CocktailById: FC<CocktailByIdProps> = ({
   ingredients,
   measures
 }) => {
+  console.log(drinks.strTags?.split(','))
   return (
     <main className='w-full bg-slate-900 px-4 py-20 container max-w-6xl mx-auto'>
       <div className='flex justify-between md:px-4 border-b py-4 md:flex-row flex-col gap-4'>
@@ -47,10 +49,16 @@ const CocktailById: FC<CocktailByIdProps> = ({
               <p>{drinks.strGlass}</p>
             </div>
 
-            <div className='text-start w-1/2'>
+            <div className='text-start md:w-1/2'>
               <h5 className='text-xl font-semibold mb-1'>Tags</h5>
-              <p className='flex flex-col'>
-                {drinks.strTags?.replace(',', ' ') ?? 'No tags'}
+              <p className='flex flex-row flex-wrap gap-1 '>
+                {drinks.strTags?.split(',').map((drink) => {
+                  return (
+                    <span key={drink} className='border p-1 rounded-md'>
+                      {drink}
+                    </span>
+                  )
+                }) ?? 'No tags'}
               </p>
             </div>
           </div>
