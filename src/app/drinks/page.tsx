@@ -1,10 +1,11 @@
 'use client'
 
-import React, { useState, ChangeEvent, useEffect, useCallback } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import Container from '@/components/Container'
 import SelectFilter, { Options } from '@/components/SelectFilter'
 import CocktailByCategory from '@/components/CocktailByCategory'
 import { Loader2 } from 'lucide-react'
+import useGetDrinksByCategory from '@/hooks/useGetDrinksByCategory'
 
 const CATEGORY_OPTIONS: Options[] = [
   { value: 'cocktail', label: 'Cocktail' },
@@ -16,49 +17,12 @@ const CATEGORY_OPTIONS: Options[] = [
 
 const FilterCocktailPage = () => {
   const [selected, setSelected] = useState<string>('cocktail')
-  const [drinksCategory, setDrinksCategory] = useState([])
-  const [drinksData, setDrinksData] = useState([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const { drinksCategory, drinksData, isLoading, handleMoreDrinks } =
+    useGetDrinksByCategory(selected)
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelected(event.target.value)
   }
-
-  const fetchDrinksByCategory = useCallback(async (value: string) => {
-    setIsLoading(true)
-    const data = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${value}`
-    )
-
-    if (!data.ok) {
-      throw new Error('Something went wrong')
-    }
-
-    const { drinks } = await data.json()
-    setDrinksData(drinks)
-    setDrinksCategory(drinks.slice(0, 12))
-    setIsLoading(false)
-  }, [])
-
-  useEffect(() => {
-    fetchDrinksByCategory(selected)
-  }, [selected, fetchDrinksByCategory])
-
-  const handleMoreDrinks = () => {
-    const lastDisplayedIndex = drinksCategory.length - 1
-
-    const nextIndex = lastDisplayedIndex + 1
-
-    const nextItems = drinksData.slice(nextIndex, nextIndex + 12)
-
-    if (nextIndex >= drinksData.length - 1) {
-      console.log('first')
-    }
-
-    setDrinksCategory((prevItems) => [...prevItems, ...nextItems])
-  }
-
-  console.log(drinksCategory)
 
   return (
     <Container>
@@ -72,13 +36,13 @@ const FilterCocktailPage = () => {
           onChange={handleSelectChange}
         />
       </div>
-      <CocktailByCategory category={selected} drinksCategory={drinksCategory} />
+      <CocktailByCategory drinksCategory={drinksCategory} />
 
       {drinksCategory.length !== drinksData.length && (
         <button
           disabled={drinksCategory.length === drinksData.length}
           onClick={handleMoreDrinks}
-          className='border border-white px-4 py-2'
+          className='border border-white px-4 py-2 mx-auto flex rounded-lg'
         >
           {isLoading ? (
             <span className='flex items-center'>

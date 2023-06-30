@@ -11,13 +11,10 @@ interface Drinks {
 }
 
 interface Props {
-  category: string
   drinksCategory: Drinks[]
 }
 
-const CocktailByCategory = ({ category, drinksCategory }: Props) => {
-  console.log(drinksCategory)
-
+const CocktailByCategory = ({ drinksCategory }: Props) => {
   return (
     <ul className='flex flex-wrap gap-20 justify-center py-10'>
       {drinksCategory &&
