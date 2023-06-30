@@ -1,5 +1,3 @@
-import { FC } from 'react'
-import { data } from '@/mock'
 import Image from 'next/image'
 import { getRandomCocktail } from '@/lib/getRandomCocktail'
 
@@ -38,7 +36,7 @@ export const DailyCocktail = async () => {
     }
   }
 
-  const content = (
+  return (
     <main className='w-full bg-slate-900 px-4'>
       <h2 className='text-center text-5xl py-4'>Random Cocktail</h2>
       <div className='flex justify-between md:px-4 border-b py-4 md:flex-row flex-col gap-4'>
@@ -47,11 +45,13 @@ export const DailyCocktail = async () => {
           alt='Daily cocktail'
           width={400}
           height={400}
-          className='rounded-lg shadow-md mx-auto'
+          className='rounded-lg shadow-md mx-auto max-h-[400px] my-auto'
         />
 
         <div className='flex flex-col md:w-1/2 '>
-          <h4 className='text-4xl mb-4 text-center'>{resCocktail.strDrink}</h4>
+          <h4 className='text-4xl mb-4 text-center font-bold underline underline-offset-2'>
+            {resCocktail.strDrink}
+          </h4>
           <h5 className='text-xl font-semibold mb-1'>Ingredients:</h5>
           <ul className='flex flex-col gap-1 border-b pb-3 mb-3'>
             {ingredients.map((ingredient, index) => (
@@ -87,6 +87,4 @@ export const DailyCocktail = async () => {
       </div>
     </main>
   )
-
-  return content
 }

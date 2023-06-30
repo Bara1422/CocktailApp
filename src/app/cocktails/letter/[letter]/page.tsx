@@ -1,21 +1,26 @@
 import { Cocktail } from '@/components/DailyCocktail'
-import { getCocktailByName } from '@/lib/getCocktailByName'
+import { getCocktailByFirstLetter } from '@/lib/getCocktailByFirstLetter'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 
-interface CocktailProps {
+interface Props {
   params: {
-    cocktail: string
+    letter: string
   }
 }
 
-const CocktailPage = async ({ params: { cocktail } }: CocktailProps) => {
-  const cocktailDataFetch = getCocktailByName(cocktail)
-  const { drinks } = await cocktailDataFetch
+const LetterPage = async ({ params: { letter } }: Props) => {
+  const res = getCocktailByFirstLetter(letter)
+  const drinks = await res
 
   return (
     <div className='flex flex-col items-center py-24  w-2/3 mx-auto p-4'>
       <h2 className='text-5xl pb-20'>Cocktails found:</h2>
+      {!drinks ? (
+        <h4 className='text-xl'>Not results, try another letter</h4>
+      ) : null}
+
       <ul className='flex flex-wrap gap-20 justify-center'>
         {drinks &&
           drinks.map((drink: Cocktail) => {
@@ -33,7 +38,9 @@ const CocktailPage = async ({ params: { cocktail } }: CocktailProps) => {
                     alt={drink.strDrink}
                     className='rounded-md'
                   />
-                  <h5 className=' text-center pt-1'>{drink.strDrink}</h5>
+                  <h5 className=' text-center pt-1 font-semibold'>
+                    {drink.strDrink}
+                  </h5>
                 </Link>
               </div>
             )
@@ -43,4 +50,4 @@ const CocktailPage = async ({ params: { cocktail } }: CocktailProps) => {
   )
 }
 
-export default CocktailPage
+export default LetterPage

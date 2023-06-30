@@ -7,8 +7,17 @@ const nextConfig = {
         hostname: 'www.thecocktaildb.com',
         port: '',
         pathname: '/images/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thecocktaildb.com',
+        port: '',
+        pathname: '/api/json/**'
       }
     ]
+  },
+  experimental: {
+    serverActions: true
   }
 }
 

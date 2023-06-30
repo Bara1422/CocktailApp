@@ -6,7 +6,7 @@ interface FooterProps {}
 
 const Footer: FC<FooterProps> = ({}) => {
   return (
-    <footer className='relative bottom-0 min-h-fit py-4 flex justify-center w-full'>
+    <footer className='relative bottom-0 min-h-fit py-4 flex justify-center w-full border-t border-slate-700'>
       <div className='flex gap-4'>
         <Link href='https://github.com/Bara1422/CocktailApp'>
           <Github className='text-slate-300 hover:text-slate-50' />

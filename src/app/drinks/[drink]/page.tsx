@@ -15,8 +15,6 @@ const DrinkPage = async ({ params: { drink } }: DrinkProps) => {
   const drinks: Cocktail = await drinkDataFetch
   const { ingredients, measures } = getIngredientsAndMeasures(drinks)
 
-  console.log(drinks)
-  console.log(ingredients, measures)
   return (
     <CocktailById
       drinks={drinks}

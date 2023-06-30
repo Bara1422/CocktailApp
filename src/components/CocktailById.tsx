@@ -15,7 +15,6 @@ const CocktailById: FC<CocktailByIdProps> = ({
   ingredients,
   measures
 }) => {
-  console.log(drinks.strTags?.split(','))
   return (
     <main className='w-full bg-slate-900 px-4 py-20 container max-w-6xl mx-auto'>
       <div className='flex justify-between md:px-4 border-b py-4 md:flex-row flex-col gap-4'>
@@ -26,7 +25,7 @@ const CocktailById: FC<CocktailByIdProps> = ({
             alt='Daily cocktail'
             width={400}
             height={400}
-            className='rounded-lg shadow-md mx-auto'
+            className='rounded-lg shadow-md mx-auto max-h-[400px] my-auto'
           />
         </div>
 

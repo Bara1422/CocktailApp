@@ -8,6 +8,6 @@ export async function getCocktailById(id: string) {
   }
 
   const { drinks } = await respuesta.json()
-  console.log(drinks[0])
+
   return drinks[0]
 }

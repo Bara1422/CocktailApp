@@ -6,5 +6,7 @@ export async function getCocktailByName(name: string) {
     throw new Error('Something went wrong at search cocktail by name')
   }
 
-  return respuesta.json()
+  const { drinks } = await respuesta.json()
+
+  return drinks
 }
