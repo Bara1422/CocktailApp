@@ -1,27 +1,68 @@
 'use client'
 
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent, useEffect } from 'react'
 import Container from '@/components/Container'
 import SelectFilter, { Options } from '@/components/SelectFilter'
 import CocktailByCategory from '@/components/CocktailByCategory'
 import { Loader2 } from 'lucide-react'
 import useGetDrinksByCategory from '@/hooks/useGetDrinksByCategory'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { useInView } from 'react-intersection-observer'
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
 
-const CATEGORY_OPTIONS: Options[] = [
-  { value: 'cocktail', label: 'Cocktail' },
-  { value: 'shot', label: 'Shot' },
-  { value: 'ordinary_drink', label: 'Ordinary Drink' },
-  { value: 'other_/_unknown', label: 'Other / Unknown' },
-  { value: 'coffee_/_tea', label: 'Coffee / Tea' }
-]
+export interface strCategory {
+  strCategory: string
+}
+
+interface strResponse {
+  value: string
+  label: string
+}
 
 const FilterCocktailPage = () => {
   const [selected, setSelected] = useState<string>('cocktail')
-  const { drinksCategory, drinksData, isLoading, handleMoreDrinks } =
+
+  const { drinksCategory, data, isLoading, handleMoreDrinks } =
     useGetDrinksByCategory(selected)
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelected(event.target.value)
+  }
+
+  const { data: categories, isLoading: loading } = useQuery({
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`
+      )
+
+      return data.drinks as strCategory[]
+    },
+    queryKey: ['categories'],
+    keepPreviousData: true
+  })
+
+  const formattedCategories: strResponse[] | undefined =
+    categories &&
+    categories.map((item) => ({
+      value: item.strCategory.replace(/ /g, '_'),
+      label: item.strCategory
+    }))
+
+  console.log(data)
+
+  const { ref, inView } = useInView()
+
+  useEffect(() => {
+    if (inView) {
+      handleMoreDrinks()
+    }
+  }, [inView, handleMoreDrinks])
+
+  if (isLoading && loading) {
+    return (
+      <Loader2 className='w-4 h-4 animate-spin absolute top-1/2 left-1/2' />
+    )
   }
 
   return (
@@ -31,16 +72,17 @@ const FilterCocktailPage = () => {
       </div>
       <div className='flex justify-center items-center flex-col max-w-[200px] mx-auto'>
         <SelectFilter
-          options={CATEGORY_OPTIONS}
+          options={formattedCategories}
           value={selected}
           onChange={handleSelectChange}
         />
       </div>
       <CocktailByCategory drinksCategory={drinksCategory} />
 
-      {drinksCategory.length !== drinksData.length && (
+      {drinksCategory.length !== data.length && (
         <button
-          disabled={drinksCategory.length === drinksData.length}
+          ref={ref}
+          disabled={drinksCategory.length === data.length}
           onClick={handleMoreDrinks}
           className='border border-white px-4 py-2 mx-auto flex rounded-lg'
         >
@@ -54,6 +96,7 @@ const FilterCocktailPage = () => {
           )}
         </button>
       )}
+      <ReactQueryDevtools initialIsOpen={false} />
     </Container>
   )
 }

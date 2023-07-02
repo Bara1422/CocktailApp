@@ -13,19 +13,19 @@ const Navbar: FC<NavbarProps> = ({}) => {
   }
 
   return (
-    <header className='bg-slate-900 text-white w-full container max-w-6xl mx-auto flex justify-between py-4 items-center fixed top-0 right-0 left-0 px-4 border-b border-slate-700'>
+    <header className='bg-slate-900 text-white w-full container max-w-6xl mx-auto flex justify-between py-4 items-center fixed top-0 right-0 left-0 px-4 border-b border-slate-700 z-50'>
       <Link href='/' className='text-white flex text-3xl md:px-0  '>
         CocktailApp
       </Link>
       <nav aria-label='desktop-menu'>
-        <ul className='md:flex hidden gap-4 '>
-          <li>
+        <ul className='md:flex hidden gap-10 '>
+          <li className='hover:underline underline-offset-2'>
             <Link href='/'>Home</Link>
           </li>
-          <li>
+          <li className='hover:underline underline-offset-2'>
             <Link href='/drinks'>Drinks</Link>
           </li>
-          <li>
+          <li className='hover:underline underline-offset-2'>
             <Link href='/ingredients'>Ingredients</Link>
           </li>
         </ul>

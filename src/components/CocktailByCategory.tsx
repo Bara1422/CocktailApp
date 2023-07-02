@@ -4,7 +4,7 @@ import { Cocktail } from './DailyCocktail'
 import Link from 'next/link'
 import Image from 'next/image'
 
-interface Drinks {
+export interface Drinks {
   strDrink: string
   strDrinkThumb: string
   idDrink: string
@@ -24,7 +24,7 @@ const CocktailByCategory = ({ drinksCategory }: Props) => {
             <div key={drink.idDrink}>
               <Link
                 href={`/drinks/${drink.idDrink}-${drinkNameWithHyphens}`}
-                className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100'
+                className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100  hover:scale-105 transition-all'
               >
                 <Image
                   width={200}
