@@ -6,6 +6,7 @@ import axios from 'axios'
 import { Loader2 } from 'lucide-react'
 import Container from '@/components/Container'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Ingredients {
   strIngredient1: string
@@ -34,12 +35,23 @@ const Ingredients = () => {
         {data &&
           data?.map((item) => {
             const ingretientForUrl = item.strIngredient1.replace(/ /g, '_')
+            const ingretientForImageUrl = item.strIngredient1.replace(
+              / /g,
+              '%20'
+            )
             return (
               <li
-                className='hover:underline hover:underline-offset-2 cursor-pointer'
+                className='cursor-pointer text-center hover:border-white border-2 p-4 rounded-lg border-slate-500 transition-all max-w-[300px] w-[200px] h-[230px]'
                 key={item.strIngredient1}
               >
                 <Link href={`/ingredients/${ingretientForUrl}`}>
+                  <Image
+                    width={150}
+                    height={150}
+                    alt={`${item.strIngredient1}`}
+                    src={`https://www.thecocktaildb.com/images/ingredients/${ingretientForImageUrl}-Medium.png`}
+                    className='mx-auto pb-2'
+                  />
                   <span>{item.strIngredient1}</span>
                 </Link>
               </li>
