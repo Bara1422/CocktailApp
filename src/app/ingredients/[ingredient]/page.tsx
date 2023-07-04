@@ -19,13 +19,10 @@ interface DrinkProps {
 const IngredientPage = async ({ params: { ingredient } }: DrinkProps) => {
   const ingredientDataFetch = getIngredientByName(ingredient)
   const ingredients: IngredientProps[] = await ingredientDataFetch
-  /* const ingredientThumbDataFetch = getIngredientThumbnails(ingredient)
-  const ingredientThumb = await ingredientThumbDataFetch
- */
+
   console.log(ingredient)
   console.log(ingredients)
-  /*   console.log(ingredientThumb)
-   */
+
   return <IngredientByName ingredients={ingredients} ingredient={ingredient} />
 }
 

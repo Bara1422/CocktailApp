@@ -1,30 +1,53 @@
 'use client'
 
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { Loader2 } from 'lucide-react'
 import Container from '@/components/Container'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useInView } from 'react-intersection-observer'
 
 interface Ingredients {
   strIngredient1: string
 }
 
 const Ingredients = () => {
+  const { ref, inView } = useInView()
+  const [ingredients, setIngredients] = useState<Ingredients[]>([])
+
   const { data, isLoading } = useQuery({
     queryFn: async () => {
       const { data } = await axios.get(
         `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
       )
-
+      setIngredients(data.drinks.slice(0, 20))
       return data.drinks as Ingredients[]
     },
     queryKey: ['ingredients']
   })
 
+  const handleMoreIngredients = useCallback(() => {
+    if (data) {
+      const lastDisplayedIndex = ingredients.length - 1
+
+      const nextIndex = lastDisplayedIndex + 1
+
+      const nextItems = data.slice(nextIndex, nextIndex + 15)
+
+      setIngredients((prevItems) => [...prevItems, ...nextItems])
+    }
+  }, [data, ingredients.length])
+
+  useEffect(() => {
+    if (inView) {
+      handleMoreIngredients()
+    }
+  }, [handleMoreIngredients, inView])
+
   console.log(data)
+  console.log(ingredients)
 
   if (isLoading) {
     return <Loader2 className='w-4 h-4 animate-spin' />
@@ -32,8 +55,8 @@ const Ingredients = () => {
   return (
     <Container>
       <ul className='pt-20 flex flex-wrap gap-6 '>
-        {data &&
-          data?.map((item) => {
+        {ingredients &&
+          ingredients?.map((item) => {
             const ingretientForUrl = item.strIngredient1.replace(/ /g, '_')
             const ingretientForImageUrl = item.strIngredient1.replace(
               / /g,
@@ -57,6 +80,13 @@ const Ingredients = () => {
               </li>
             )
           })}
+        {ingredients?.length !== data?.length && (
+          <button
+            ref={ref}
+            disabled={ingredients?.length === data?.length}
+            className='border border-white px-4 py-2 mx-auto flex rounded-lg'
+          ></button>
+        )}
       </ul>
     </Container>
   )

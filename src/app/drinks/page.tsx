@@ -21,15 +21,6 @@ interface strResponse {
 }
 
 const FilterCocktailPage = () => {
-  const [selected, setSelected] = useState<string>('cocktail')
-
-  const { drinksCategory, data, isLoading, handleMoreDrinks } =
-    useGetDrinksByCategory(selected)
-
-  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelected(event.target.value)
-  }
-
   const { data: categories, isLoading: loading } = useQuery({
     queryFn: async () => {
       const { data } = await axios.get(
@@ -48,6 +39,19 @@ const FilterCocktailPage = () => {
       value: item.strCategory.replace(/ /g, '_'),
       label: item.strCategory
     }))
+
+  console.log(formattedCategories)
+  const defaultDrink = formattedCategories
+    ? formattedCategories[0].value
+    : 'Ordinary_Drink'
+  const [selected, setSelected] = useState<string>(defaultDrink)
+
+  const { drinksCategory, data, isLoading, handleMoreDrinks } =
+    useGetDrinksByCategory(selected)
+
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelected(event.target.value)
+  }
 
   console.log(data)
 
@@ -79,10 +83,10 @@ const FilterCocktailPage = () => {
       </div>
       <CocktailByCategory drinksCategory={drinksCategory} />
 
-      {drinksCategory.length !== data.length && (
+      {drinksCategory?.length !== data?.length && (
         <button
           ref={ref}
-          disabled={drinksCategory.length === data.length}
+          disabled={drinksCategory?.length === data?.length}
           onClick={handleMoreDrinks}
           className='border border-white px-4 py-2 mx-auto flex rounded-lg'
         >
