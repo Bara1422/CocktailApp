@@ -16,7 +16,7 @@ const SelectFilter = ({ options, value, onChange }: Props) => {
     <select
       value={value}
       onChange={onChange}
-      className='text-white rounded-md bg-slate-900 border border-white p-1'
+      className='text-white rounded-md bg-slate-900 border border-white p-1 w-[200px] '
     >
       {options &&
         options.map((option) => (

@@ -3,13 +3,14 @@
 import React, { useState, ChangeEvent, useEffect } from 'react'
 import Container from '@/components/Container'
 import SelectFilter, { Options } from '@/components/SelectFilter'
-import CocktailByCategory from '@/components/CocktailByCategory'
+import CocktailByCategory, { Drinks } from '@/components/CocktailByCategory'
 import { Loader2 } from 'lucide-react'
 import useGetDrinksByCategory from '@/hooks/useGetDrinksByCategory'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useInView } from 'react-intersection-observer'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
+import SearchFilter from '@/components/SearchFilter'
 
 export interface strCategory {
   strCategory: string
@@ -40,11 +41,12 @@ const FilterCocktailPage = () => {
       label: item.strCategory
     }))
 
-  console.log(formattedCategories)
   const defaultDrink = formattedCategories
     ? formattedCategories[0].value
     : 'Ordinary_Drink'
   const [selected, setSelected] = useState<string>(defaultDrink)
+  const [drinksFilter, setDrinksFilter] = useState<Drinks[]>([])
+  const [value, setValue] = useState<string>('')
 
   const { drinksCategory, data, isLoading, handleMoreDrinks } =
     useGetDrinksByCategory(selected)
@@ -52,8 +54,6 @@ const FilterCocktailPage = () => {
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelected(event.target.value)
   }
-
-  console.log(data)
 
   const { ref, inView } = useInView()
 
@@ -69,19 +69,33 @@ const FilterCocktailPage = () => {
     )
   }
 
+  if (!data) {
+    return <Loader2 className='w-4 h-4 animate-spin' />
+  }
+
   return (
     <Container>
       <div className='flex justify-center flex-col items-center'>
         <h2 className='text-5xl font-semibold pb-10'>Cocktails</h2>
       </div>
-      <div className='flex justify-center items-center flex-col max-w-[200px] mx-auto'>
+      <div className='flex justify-center flex-col-reverse md:flex-row items-center w-full gap-10 mx-auto'>
         <SelectFilter
           options={formattedCategories}
           value={selected}
           onChange={handleSelectChange}
         />
+        <SearchFilter
+          value={value}
+          data={data}
+          setDrinksFilter={setDrinksFilter}
+          setValue={setValue}
+        />
       </div>
-      <CocktailByCategory drinksCategory={drinksCategory} />
+      <CocktailByCategory
+        value={value}
+        drinksCategory={drinksCategory}
+        drinksFilter={drinksFilter}
+      />
 
       {drinksCategory?.length !== data?.length && (
         <button

@@ -15,20 +15,22 @@ const useGetDrinksByCategory = (selected: string) => {
         `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${selected}`
       )
       setDrinksCategory(data.drinks.slice(0, 12))
-      return data.drinks
+      return data.drinks as Drinks[]
     },
     queryKey: ['category', selected],
     keepPreviousData: true
   })
 
   const handleMoreDrinks = () => {
-    const lastDisplayedIndex = drinksCategory.length - 1
+    if (data) {
+      const lastDisplayedIndex = drinksCategory.length - 1
 
-    const nextIndex = lastDisplayedIndex + 1
+      const nextIndex = lastDisplayedIndex + 1
 
-    const nextItems = data.slice(nextIndex, nextIndex + 12)
+      const nextItems = data.slice(nextIndex, nextIndex + 12)
 
-    setDrinksCategory((prevItems) => [...prevItems, ...nextItems])
+      setDrinksCategory((prevItems) => [...prevItems, ...nextItems])
+    }
   }
 
   return { isLoading, drinksCategory, data, handleMoreDrinks }

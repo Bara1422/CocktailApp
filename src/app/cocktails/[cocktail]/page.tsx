@@ -11,7 +11,10 @@ interface CocktailProps {
 
 const CocktailPage = async ({ params: { cocktail } }: CocktailProps) => {
   const cocktailDataFetch = getCocktailByName(cocktail)
-  const { drinks } = await cocktailDataFetch
+  const drinks = await cocktailDataFetch
+
+  console.log(cocktail)
+  console.log(drinks)
 
   return (
     <div className='flex flex-col items-center py-24  w-2/3 mx-auto p-4'>

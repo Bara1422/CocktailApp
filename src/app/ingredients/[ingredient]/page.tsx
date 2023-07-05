@@ -20,9 +20,6 @@ const IngredientPage = async ({ params: { ingredient } }: DrinkProps) => {
   const ingredientDataFetch = getIngredientByName(ingredient)
   const ingredients: IngredientProps[] = await ingredientDataFetch
 
-  console.log(ingredient)
-  console.log(ingredients)
-
   return <IngredientByName ingredients={ingredients} ingredient={ingredient} />
 }
 

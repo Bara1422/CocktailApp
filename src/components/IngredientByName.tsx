@@ -15,14 +15,16 @@ interface Props {
 }
 
 const IngredientByName = ({ ingredients, ingredient }: Props) => {
+  const ingredientName = ingredient.replace(/_/g, ' ')
+  const ingretientForImageUrl = ingredient.replace(/_/g, '%20')
   return (
     <main className='w-full bg-slate-900 px-4 py-20 container max-w-6xl mx-auto'>
       <div className='flex justify-between md:px-4 border-b py-4 md:flex-row flex-col gap-4'>
-        <div className='border-b md:border-none'>
-          <h2 className='text-center text-5xl'>{ingredient}</h2>
+        <div className='border-b md:border-none '>
+          <h2 className='text-center text-5xl mb-8'>{ingredientName}</h2>
           <Image
-            src={`https://www.thecocktaildb.com/images/ingredients/${ingredient}.png`}
-            alt='Daily cocktail'
+            src={`https://www.thecocktaildb.com/images/ingredients/${ingretientForImageUrl}.png`}
+            alt={`${ingredient}`}
             width={400}
             height={400}
             className='rounded-lg shadow-md mx-auto max-h-[400px] my-auto'

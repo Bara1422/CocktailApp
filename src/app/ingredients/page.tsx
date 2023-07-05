@@ -46,9 +46,6 @@ const Ingredients = () => {
     }
   }, [handleMoreIngredients, inView])
 
-  console.log(data)
-  console.log(ingredients)
-
   if (isLoading) {
     return <Loader2 className='w-4 h-4 animate-spin' />
   }
