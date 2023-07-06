@@ -47,8 +47,13 @@ const Ingredients = () => {
   }, [handleMoreIngredients, inView])
 
   if (isLoading) {
-    return <Loader2 className='w-4 h-4 animate-spin' />
+    return (
+      <div className='flex justify-center items-center pt-52'>
+        <Loader2 className='h-10 animate-spin flex justify-center items-center w-10' />
+      </div>
+    )
   }
+
   return (
     <Container>
       <ul className='pt-20 flex flex-wrap gap-6 '>

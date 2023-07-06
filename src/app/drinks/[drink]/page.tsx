@@ -1,3 +1,4 @@
+import ButtonBack from '@/components/ButtonBack'
 import CocktailById from '@/components/CocktailById'
 import { Cocktail } from '@/components/DailyCocktail'
 import { getCocktailById } from '@/lib/getCocktailById'
@@ -16,11 +17,14 @@ const DrinkPage = async ({ params: { drink } }: DrinkProps) => {
   const { ingredients, measures } = getIngredientsAndMeasures(drinks)
 
   return (
-    <CocktailById
-      drinks={drinks}
-      ingredients={ingredients}
-      measures={measures}
-    />
+    <>
+      <CocktailById
+        drinks={drinks}
+        ingredients={ingredients}
+        measures={measures}
+      />
+      <ButtonBack />
+    </>
   )
 }
 

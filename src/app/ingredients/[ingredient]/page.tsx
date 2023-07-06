@@ -1,3 +1,4 @@
+import ButtonBack from '@/components/ButtonBack'
 import CocktailById from '@/components/CocktailById'
 import { Cocktail } from '@/components/DailyCocktail'
 import IngredientByName, {
@@ -20,7 +21,12 @@ const IngredientPage = async ({ params: { ingredient } }: DrinkProps) => {
   const ingredientDataFetch = getIngredientByName(ingredient)
   const ingredients: IngredientProps[] = await ingredientDataFetch
 
-  return <IngredientByName ingredients={ingredients} ingredient={ingredient} />
+  return (
+    <>
+      <IngredientByName ingredients={ingredients} ingredient={ingredient} />
+      <ButtonBack />
+    </>
+  )
 }
 
 export default IngredientPage

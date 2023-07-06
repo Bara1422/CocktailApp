@@ -73,10 +73,11 @@ export const DailyCocktail = async () => {
             <div className='text-start w-1/2'>
               <h5 className='text-xl font-semibold mb-1'>Tags</h5>
               <p className='flex flex-row flex-wrap gap-1 '>
-                {resCocktail.strTags?.split(',').map((drink) => {
+                {resCocktail.strTags?.split(',').map((drink, index, array) => {
                   return (
-                    <span key={drink} className='border p-1 rounded-md'>
+                    <span key={drink} className=' rounded-md'>
                       {drink}
+                      {index < array.length - 1 ? ' -' : ''}
                     </span>
                   )
                 }) ?? 'No tags'}
