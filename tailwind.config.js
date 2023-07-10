@@ -23,7 +23,9 @@ module.exports = {
         'open-menu': 'open-menu 0.5s ease-in-out forwards'
       },
       colors: {
-        muted: 'hsl(210 40% 96.1%)'
+        muted: 'hsl(210 40% 96.1%)',
+        background: '#222222',
+        letters: '#f2f2f2'
       }
     }
   },

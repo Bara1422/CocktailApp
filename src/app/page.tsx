@@ -1,14 +1,25 @@
-import { DailyCocktail } from '@/components/DailyCocktail'
+import CocktailById from '@/components/CocktailById'
+import { Cocktail, DailyCocktail } from '@/components/DailyCocktail'
 import SearchCocktail from '@/components/SearchCocktail'
-import SelectFilter from '@/components/SelectFilter'
+import { getIngredientsAndMeasures } from '@/lib/getIngredientsAndMeasures'
+import { getRandomCocktail } from '@/lib/getRandomCocktail'
 
-export default function Home() {
+export default async function Home() {
+  const res = getRandomCocktail()
+  const resCocktail: Cocktail = await res
+
+  const { ingredients, measures } = getIngredientsAndMeasures(resCocktail)
+
   return (
     <main className='bg-slate-900 pb-10 '>
-      <div className='container mx-auto max-w-6xl'>
+      <div className='container mx-auto max-w-7xl'>
         <SearchCocktail />
 
-        <DailyCocktail />
+        <CocktailById
+          drinks={resCocktail}
+          ingredients={ingredients}
+          measures={measures}
+        />
       </div>
     </main>
   )

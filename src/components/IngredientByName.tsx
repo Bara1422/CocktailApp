@@ -18,7 +18,7 @@ const IngredientByName = ({ ingredients, ingredient }: Props) => {
   const ingredientName = ingredient.replace(/_/g, ' ')
   const ingretientForImageUrl = ingredient.replace(/_/g, '%20')
   return (
-    <main className='w-full bg-slate-900 px-4 py-20 container max-w-6xl mx-auto'>
+    <main className='w-full bg-slate-900 px-4 pt-20 container max-w-7xl mx-auto'>
       <div className='flex justify-between md:px-4 border-b py-4 md:flex-row flex-col gap-4'>
         <div className='border-b md:border-none '>
           <h2 className='text-center text-5xl mb-8'>{ingredientName}</h2>

@@ -8,5 +8,7 @@ export async function getRandomCocktail() {
     throw new Error('Failed to fetch data')
   }
 
-  return respuesta.json()
+  const { drinks } = await respuesta.json()
+
+  return drinks[0]
 }

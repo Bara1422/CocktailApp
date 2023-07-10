@@ -1,6 +1,4 @@
-import { getDrinksFilter } from '@/lib/getDrinksFilter'
 import React from 'react'
-import { Cocktail } from './DailyCocktail'
 import Link from 'next/link'
 import Image from 'next/image'
 

@@ -13,8 +13,12 @@ const Navbar: FC<NavbarProps> = ({}) => {
   }
 
   return (
-    <header className='bg-slate-900 text-white w-full container max-w-6xl mx-auto flex justify-between py-4 items-center fixed top-0 right-0 left-0 px-4 border-b border-slate-700 z-50'>
-      <Link href='/' className='text-white flex text-3xl md:px-0  '>
+    <header className='bg-slate-900 text-white w-full container max-w-7xl mx-auto flex justify-between py-4 items-center fixed top-0 right-0 left-0 px-4 border-b border-slate-700 z-50'>
+      <Link
+        href='/'
+        className='text-white flex text-3xl md:px-0 '
+        onClick={() => nav && toggleMenu()}
+      >
         CocktailApp
       </Link>
       <nav aria-label='desktop-menu'>

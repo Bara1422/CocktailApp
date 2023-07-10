@@ -2,43 +2,43 @@
 
 import { ChangeEvent, Dispatch, FC, SetStateAction } from 'react'
 
-import { Drinks } from './CocktailByCategory'
 import { Input } from './ui/Input'
+import Ingredients from '@/app/ingredients/page'
 
-interface SearchFilterProps {
-  data: Drinks[]
-  setDrinksFilter: Dispatch<SetStateAction<Drinks[]>>
+interface IngredientsFilter {
+  data: Ingredients[]
+  setIngredientFilter: Dispatch<SetStateAction<Ingredients[]>>
   setValue: Dispatch<SetStateAction<string>>
   value: string
 }
 
-const SearchFilter: FC<SearchFilterProps> = ({
+const IngredientsFilter: FC<IngredientsFilter> = ({
   data,
-  setDrinksFilter,
+  setIngredientFilter,
   setValue,
   value
-}: SearchFilterProps) => {
+}: IngredientsFilter) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
     filterArray(e.target.value)
   }
 
   const filterArray = (input: string) => {
-    const filtered = data.filter((item) => item.strDrink.includes(input))
-    setDrinksFilter(filtered)
+    const filtered = data.filter((item) => item.strIngredient1.includes(input))
+    setIngredientFilter(filtered)
   }
 
   return (
-    <div>
+    <div className='flex md:justify-end justify-center pt-4 '>
       <Input
         className='bg-slate-50'
         type='text'
         value={value}
         onChange={handleInputChange}
-        placeholder='Filter cocktail...'
+        placeholder='Filter ingredient...'
       />
     </div>
   )
 }
 
-export default SearchFilter
+export default IngredientsFilter

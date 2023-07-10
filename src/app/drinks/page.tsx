@@ -2,7 +2,7 @@
 
 import React, { useState, ChangeEvent, useEffect } from 'react'
 import Container from '@/components/Container'
-import SelectFilter, { Options } from '@/components/SelectFilter'
+import SelectFilter from '@/components/SelectFilter'
 import CocktailByCategory, { Drinks } from '@/components/CocktailByCategory'
 import { Loader2 } from 'lucide-react'
 import useGetDrinksByCategory from '@/hooks/useGetDrinksByCategory'
@@ -43,7 +43,8 @@ const FilterCocktailPage = () => {
 
   const defaultDrink = formattedCategories
     ? formattedCategories[0].value
-    : 'Ordinary_Drink'
+    : 'Cocktail'
+
   const [selected, setSelected] = useState<string>(defaultDrink)
   const [drinksFilter, setDrinksFilter] = useState<Drinks[]>([])
   const [value, setValue] = useState<string>('')
@@ -78,18 +79,20 @@ const FilterCocktailPage = () => {
       <div className='flex justify-center flex-col items-center'>
         <h2 className='text-5xl font-semibold pb-10'>Cocktails</h2>
       </div>
-      <div className='flex justify-center flex-col-reverse md:flex-row items-center w-full gap-10 mx-auto'>
-        <SelectFilter
-          options={formattedCategories}
-          value={selected}
-          onChange={handleSelectChange}
-        />
-        <SearchFilter
-          value={value}
-          data={data}
-          setDrinksFilter={setDrinksFilter}
-          setValue={setValue}
-        />
+      <div className='flex justify-center'>
+        <div className='flex flex-col-reverse md:flex-row  gap-10 '>
+          <SelectFilter
+            options={formattedCategories}
+            value={selected}
+            onChange={handleSelectChange}
+          />
+          <SearchFilter
+            value={value}
+            data={data}
+            setDrinksFilter={setDrinksFilter}
+            setValue={setValue}
+          />
+        </div>
       </div>
       <CocktailByCategory
         value={value}

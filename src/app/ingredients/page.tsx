@@ -8,6 +8,8 @@ import Container from '@/components/Container'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useInView } from 'react-intersection-observer'
+import SearchFilter from '@/components/SearchFilter'
+import IngredientsFilter from '@/components/IngredientsFilter'
 
 interface Ingredients {
   strIngredient1: string
@@ -16,6 +18,8 @@ interface Ingredients {
 const Ingredients = () => {
   const { ref, inView } = useInView()
   const [ingredients, setIngredients] = useState<Ingredients[]>([])
+  const [value, setValue] = useState<string>('')
+  const [ingredientsFilter, setIngredientsFilter] = useState<Ingredients[]>([])
 
   const { data, isLoading } = useQuery({
     queryFn: async () => {
@@ -46,7 +50,7 @@ const Ingredients = () => {
     }
   }, [handleMoreIngredients, inView])
 
-  if (isLoading) {
+  if (isLoading || !data) {
     return (
       <div className='flex justify-center items-center pt-52'>
         <Loader2 className='h-10 animate-spin flex justify-center items-center w-10' />
@@ -54,11 +58,24 @@ const Ingredients = () => {
     )
   }
 
+  console.log(data)
+
+  const ingredientsRender = value ? ingredientsFilter : ingredients
+
   return (
     <Container>
-      <ul className='pt-20 flex flex-wrap gap-6 '>
-        {ingredients &&
-          ingredients?.map((item) => {
+      <h3 className='text-3xl md:text-4xl flex justify-center mt-10'>
+        Ingredients
+      </h3>
+      <IngredientsFilter
+        data={data}
+        setIngredientFilter={setIngredientsFilter}
+        setValue={setValue}
+        value={value}
+      />
+      <ul className='mt-6 flex flex-wrap gap-6 justify-center'>
+        {ingredientsRender.length > 0 ? (
+          ingredientsRender.map((item) => {
             const ingretientForUrl = item.strIngredient1.replace(/ /g, '_')
             const ingretientForImageUrl = item.strIngredient1.replace(
               / /g,
@@ -66,7 +83,7 @@ const Ingredients = () => {
             )
             return (
               <li
-                className='cursor-pointer text-center hover:border-white border-2 p-4 rounded-lg border-slate-500 transition-all max-w-[300px] w-[200px] h-[230px]'
+                className='cursor-pointer text-center hover:border-white border-2 p-4 rounded-lg border-slate-700 transition-all max-w-[300px] w-[200px] h-[230px]'
                 key={item.strIngredient1}
               >
                 <Link href={`/ingredients/${ingretientForUrl}`}>
@@ -81,7 +98,13 @@ const Ingredients = () => {
                 </Link>
               </li>
             )
-          })}
+          })
+        ) : (
+          <p className='text-xl'>
+            Doesn&apos;t find ingredients with this name.
+          </p>
+        )}
+
         {ingredients?.length !== data?.length && (
           <button
             ref={ref}

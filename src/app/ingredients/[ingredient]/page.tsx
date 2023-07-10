@@ -1,15 +1,10 @@
 import ButtonBack from '@/components/ButtonBack'
-import CocktailById from '@/components/CocktailById'
-import { Cocktail } from '@/components/DailyCocktail'
+import Container from '@/components/Container'
 import IngredientByName, {
   IngredientProps
 } from '@/components/IngredientByName'
-import { getCocktailById } from '@/lib/getCocktailById'
-import {
-  getIngredientByName,
-  getIngredientThumbnails
-} from '@/lib/getIngredientByName'
-import { getIngredientsAndMeasures } from '@/lib/getIngredientsAndMeasures'
+
+import { getIngredientByName } from '@/lib/getIngredientByName'
 
 interface DrinkProps {
   params: {
@@ -22,10 +17,12 @@ const IngredientPage = async ({ params: { ingredient } }: DrinkProps) => {
   const ingredients: IngredientProps[] = await ingredientDataFetch
 
   return (
-    <>
+    <Container>
       <IngredientByName ingredients={ingredients} ingredient={ingredient} />
-      <ButtonBack />
-    </>
+      <div className='flex justify-end w-full pt-10'>
+        <ButtonBack />
+      </div>
+    </Container>
   )
 }
 
