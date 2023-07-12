@@ -14,7 +14,6 @@ const DrinkPage = async ({ params: { drink } }: DrinkProps) => {
   const drinkGood = drink.replace(/(-[^-]*)\//, '$1-')
   const drinkId = drinkGood.split('-')[0]
 
-  console.log(drink)
   const drinkDataFetch = getCocktailById(drinkId)
   const drinks: Cocktail = await drinkDataFetch
   const { ingredients, measures } = getIngredientsAndMeasures(drinks)

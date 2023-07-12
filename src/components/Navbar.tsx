@@ -24,7 +24,9 @@ const Navbar: FC<NavbarProps> = ({}) => {
       <nav aria-label='desktop-menu'>
         <ul className='md:flex hidden gap-10 '>
           <li className='hover:underline underline-offset-2'>
-            <Link href='/'>Home</Link>
+            <Link href='/' prefetch={false}>
+              Home
+            </Link>
           </li>
           <li className='hover:underline underline-offset-2'>
             <Link href='/drinks'>Drinks</Link>

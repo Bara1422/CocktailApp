@@ -16,11 +16,13 @@ interface Props {
 
 const CocktailByCategory = ({ drinksCategory, drinksFilter, value }: Props) => {
   const drinksRender = value ? drinksFilter : drinksCategory
+
   return (
     <ul className='flex flex-wrap gap-20 justify-center py-10'>
       {drinksRender.length > 0 ? (
         drinksRender.map((drink: Drinks) => {
-          const drinkNameWithHyphens = drink.strDrink.replace(/ /g, '-')
+          const drinkNameWithHyphens = drink.strDrink.replace(/[ /]/g, '-')
+          console.log(drinkNameWithHyphens)
           return (
             <div key={drink.idDrink}>
               <Link

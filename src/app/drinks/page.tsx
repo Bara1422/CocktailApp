@@ -7,10 +7,10 @@ import CocktailByCategory, { Drinks } from '@/components/CocktailByCategory'
 import { Loader2 } from 'lucide-react'
 import useGetDrinksByCategory from '@/hooks/useGetDrinksByCategory'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { useInView } from 'react-intersection-observer'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import SearchFilter from '@/components/SearchFilter'
+import { useInViewLogic } from '@/hooks/useInViewLogic'
 
 export interface strCategory {
   strCategory: string
@@ -56,22 +56,14 @@ const FilterCocktailPage = () => {
     setSelected(event.target.value)
   }
 
-  const { ref, inView } = useInView()
+  const { ref } = useInViewLogic(handleMoreDrinks)
 
-  useEffect(() => {
-    if (inView) {
-      handleMoreDrinks()
-    }
-  }, [inView, handleMoreDrinks])
+  console.log(drinksFilter)
 
-  if (isLoading && loading) {
+  if ((isLoading && loading) || !data) {
     return (
       <Loader2 className='w-4 h-4 animate-spin absolute top-1/2 left-1/2' />
     )
-  }
-
-  if (!data) {
-    return <Loader2 className='w-4 h-4 animate-spin' />
   }
 
   return (
@@ -87,6 +79,7 @@ const FilterCocktailPage = () => {
             onChange={handleSelectChange}
           />
           <SearchFilter
+            selected={selected}
             value={value}
             data={data}
             setDrinksFilter={setDrinksFilter}

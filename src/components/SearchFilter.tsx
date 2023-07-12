@@ -1,6 +1,13 @@
 'use client'
 
-import { ChangeEvent, Dispatch, FC, SetStateAction } from 'react'
+import {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useEffect
+} from 'react'
 
 import { Drinks } from './CocktailByCategory'
 import { Input } from './ui/Input'
@@ -10,12 +17,14 @@ interface SearchFilterProps {
   setDrinksFilter: Dispatch<SetStateAction<Drinks[]>>
   setValue: Dispatch<SetStateAction<string>>
   value: string
+  selected: string
 }
 
 const SearchFilter: FC<SearchFilterProps> = ({
   data,
   setDrinksFilter,
   setValue,
+  selected,
   value
 }: SearchFilterProps) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,13 +32,19 @@ const SearchFilter: FC<SearchFilterProps> = ({
     filterArray(e.target.value)
   }
 
-  const filterArray = (input: string) => {
-    const lowerInput = input.toLowerCase()
-    const filtered = data.filter((item) =>
-      item.strDrink.toLowerCase().includes(lowerInput)
-    )
-    setDrinksFilter(filtered)
-  }
+  const filterArray = useCallback(
+    (input: string) => {
+      const lowerInput = input.toLowerCase()
+      const filtered = data.filter((item) =>
+        item.strDrink.toLowerCase().includes(lowerInput)
+      )
+      setDrinksFilter(filtered)
+    },
+    [data, setDrinksFilter]
+  )
+  useEffect(() => {
+    filterArray(value)
+  }, [selected, value, filterArray])
 
   return (
     <div>
