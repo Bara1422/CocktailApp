@@ -15,9 +15,6 @@ const nextConfig = {
         pathname: '/api/json/**'
       }
     ]
-  },
-  experimental: {
-    serverActions: true
   }
 }
 

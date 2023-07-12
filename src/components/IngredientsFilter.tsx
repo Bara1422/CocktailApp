@@ -24,7 +24,10 @@ const IngredientsFilter: FC<IngredientsFilter> = ({
   }
 
   const filterArray = (input: string) => {
-    const filtered = data.filter((item) => item.strIngredient1.includes(input))
+    const lowerInput = input.toLowerCase()
+    const filtered = data.filter((item) =>
+      item.strIngredient1.toLowerCase().includes(lowerInput)
+    )
     setIngredientFilter(filtered)
   }
 

@@ -11,15 +11,3 @@ export default async function getAllIngredients() {
 
   return drinks
 }
-
-/* const { data, isLoading } = useQuery({
-  queryFn: async () => {
-    const { data } = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
-    )
-
-    return data.drinks as Ingredients[]
-  },
-  queryKey: ['ingredients']
-})
- */

@@ -24,7 +24,10 @@ const SearchFilter: FC<SearchFilterProps> = ({
   }
 
   const filterArray = (input: string) => {
-    const filtered = data.filter((item) => item.strDrink.includes(input))
+    const lowerInput = input.toLowerCase()
+    const filtered = data.filter((item) =>
+      item.strDrink.toLowerCase().includes(lowerInput)
+    )
     setDrinksFilter(filtered)
   }
 
