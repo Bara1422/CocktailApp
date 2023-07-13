@@ -37,9 +37,9 @@ export const DailyCocktail = async () => {
   }
 
   return (
-    <main className='w-full bg-slate-900 px-4 text-letters'>
-      <h2 className='text-center text-5xl py-4 border-b'>Random Cocktail</h2>
-      <div className='flex justify-between md:px-4 border-b py-4 md:flex-row flex-col gap-4'>
+    <main className='w-full px-4 bg-slate-900 text-letters'>
+      <h2 className='py-4 text-5xl text-center border-b'>Random Cocktail</h2>
+      <div className='flex flex-col justify-between gap-4 py-4 border-b md:px-4 md:flex-row'>
         <Image
           src={resCocktail.strDrinkThumb}
           alt='Random cocktail'
@@ -49,35 +49,35 @@ export const DailyCocktail = async () => {
         />
 
         <div className='flex flex-col md:w-1/2 '>
-          <h4 className='text-5xl mb-4 text-center font-bold  '>
+          <h4 className='mb-4 text-5xl font-bold text-center '>
             {resCocktail.strDrink}
           </h4>
-          <h5 className='text-3xl font-semibold mb-1'>Ingredients:</h5>
-          <ul className='flex flex-col gap-1 border-b pb-3 mb-3'>
+          <h5 className='mb-1 text-3xl font-semibold'>Ingredients:</h5>
+          <ul className='flex flex-col gap-1 pb-3 mb-3 border-b'>
             {ingredients.map((ingredient, index) => (
-              <li key={index} className='text-xl text-white/80 leading-7'>
+              <li key={index} className='text-xl leading-7 text-white/80'>
                 &bull; {ingredient} - {measures[index]}
               </li>
             ))}
           </ul>
 
-          <h5 className='text-3xl font-semibold mb-1'>Instructions:</h5>
-          <p className='border-b pb-3 mb-3 leading-7 text-xl text-white/80'>
+          <h5 className='mb-1 text-3xl font-semibold'>Instructions:</h5>
+          <p className='pb-3 mb-3 text-xl leading-7 border-b text-white/80'>
             {resCocktail.strInstructions}
           </p>
 
           <div className='flex justify-between'>
             <div className='w-1/2'>
-              <h5 className='text-3xl font-semibold mb-1'>Glass</h5>
+              <h5 className='mb-1 text-3xl font-semibold'>Glass</h5>
               <p className='text-xl text-white/70'>{resCocktail.strGlass}</p>
             </div>
 
-            <div className='text-start w-1/2'>
-              <h5 className='text-3xl font-semibold mb-1 '>Tags</h5>
+            <div className='w-1/2 text-start'>
+              <h5 className='mb-1 text-3xl font-semibold '>Tags</h5>
               <p className='flex flex-row flex-wrap gap-1 text-xl text-white/70'>
                 {resCocktail.strTags?.split(',').map((drink, index, array) => {
                   return (
-                    <span key={drink} className=' rounded-md'>
+                    <span key={drink} className='rounded-md '>
                       {drink}
                       {index < array.length - 1 ? ' -' : ''}
                     </span>

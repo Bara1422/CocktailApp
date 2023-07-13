@@ -32,7 +32,7 @@ const IngredientsFilter: FC<IngredientsFilter> = ({
   }
 
   return (
-    <div className='flex md:justify-end justify-center pt-4 '>
+    <div className='flex justify-center pt-4 md:justify-end '>
       <Input
         className='bg-slate-50'
         type='text'

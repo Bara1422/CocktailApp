@@ -17,36 +17,40 @@ interface Props {
 const CocktailByCategory = ({ drinksCategory, drinksFilter, value }: Props) => {
   const drinksRender = value ? drinksFilter : drinksCategory
 
+  if (drinksRender.length === 0) {
+    return (
+      <p className='flex justify-center items-center py-14 text-2xl w-1/2 mx-auto [text-wrap:balance] text-center'>
+        No cocktails founds with that name in this category. If you want a full
+        search, try in the Search by letter section or try in each category
+        filter.
+      </p>
+    )
+  }
+
   return (
-    <ul className='flex flex-wrap gap-20 justify-center py-10'>
-      {drinksRender.length > 0 ? (
-        drinksRender.map((drink: Drinks) => {
-          const drinkNameWithHyphens = drink.strDrink.replace(/[ /]/g, '-')
-          console.log(drinkNameWithHyphens)
-          return (
-            <div key={drink.idDrink}>
-              <Link
-                href={`/drinks/${drink.idDrink}-${drinkNameWithHyphens}`}
-                className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100  hover:scale-105 transition-all'
-              >
-                <Image
-                  width={200}
-                  height={200}
-                  src={drink.strDrinkThumb}
-                  alt={drink.strDrink}
-                  className='rounded-md'
-                />
-                <h5 className=' text-center pt-1'>{drink.strDrink}</h5>
-              </Link>
-            </div>
-          )
-        })
-      ) : (
-        <p className='text-xl'>
-          Doesn&apos;t find cocktails with this name. If you wanna a full
-          search, try in the Search by letter section.
-        </p>
-      )}
+    <ul className=' md:gap-10 gap-5 grid grid-cols-[repeat(auto-fill,200px)] md:justify-between justify-around  py-10'>
+      {drinksRender.map((drink: Drinks) => {
+        const drinkNameWithHyphens = drink.strDrink.replace(/[ /]/g, '-')
+
+        return (
+          <li key={drink.idDrink}>
+            <Link
+              prefetch={false}
+              href={`/drinks/${drink.idDrink}-${drinkNameWithHyphens}`}
+              className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100  hover:scale-105 transition-all'
+            >
+              <Image
+                width={200}
+                height={200}
+                src={drink.strDrinkThumb}
+                alt={drink.strDrink}
+                className='rounded-md'
+              />
+              <h5 className='pt-1 text-center '>{drink.strDrink}</h5>
+            </Link>
+          </li>
+        )
+      })}
     </ul>
   )
 }

@@ -14,7 +14,7 @@ const Ingredients = async () => {
 
   return (
     <Container>
-      <ul className='pt-20 flex flex-wrap gap-6 '>
+      <ul className='flex flex-wrap gap-6 pt-20 '>
         {ingredientsTotal.map((item) => {
           const ingretientForUrl = item.strIngredient1.replace(/ /g, '_')
           const ingretientForImageUrl = item.strIngredient1.replace(/ /g, '%20')
@@ -29,7 +29,7 @@ const Ingredients = async () => {
                   height={150}
                   alt={`${item.strIngredient1}`}
                   src={`https://www.thecocktaildb.com/images/ingredients/${ingretientForImageUrl}-Medium.png`}
-                  className='mx-auto pb-2'
+                  className='pb-2 mx-auto'
                 />
                 <span>{item.strIngredient1}</span>
               </Link>

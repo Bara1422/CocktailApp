@@ -52,19 +52,17 @@ const Ingredients = () => {
 
   if (isLoading || !data) {
     return (
-      <div className='flex justify-center items-center pt-52'>
-        <Loader2 className='h-10 animate-spin flex justify-center items-center w-10' />
+      <div className='flex items-center justify-center pt-52'>
+        <Loader2 className='flex items-center justify-center w-10 h-10 animate-spin' />
       </div>
     )
   }
-
-  console.log(data)
 
   const ingredientsRender = value ? ingredientsFilter : ingredients
 
   return (
     <Container>
-      <h3 className='text-3xl md:text-4xl flex justify-center mt-10'>
+      <h3 className='flex justify-center text-4xl font-semibold md:text-5xl'>
         Ingredients
       </h3>
       <IngredientsFilter
@@ -73,7 +71,7 @@ const Ingredients = () => {
         setValue={setValue}
         value={value}
       />
-      <ul className='mt-6 flex flex-wrap gap-6 justify-center'>
+      <ul className='mt-6 md:gap-10 gap-5 grid grid-cols-[repeat(auto-fill,200px)] md:justify-between justify-around'>
         {ingredientsRender.length > 0 ? (
           ingredientsRender.map((item) => {
             const ingretientForUrl = item.strIngredient1.replace(/ /g, '_')
@@ -88,11 +86,12 @@ const Ingredients = () => {
               >
                 <Link href={`/ingredients/${ingretientForUrl}`}>
                   <Image
+                    priority={true}
                     width={150}
                     height={150}
                     alt={`${item.strIngredient1}`}
                     src={`https://www.thecocktaildb.com/images/ingredients/${ingretientForImageUrl}-Medium.png`}
-                    className='mx-auto pb-2'
+                    className='pb-2 mx-auto'
                   />
                   <span>{item.strIngredient1}</span>
                 </Link>
@@ -109,7 +108,7 @@ const Ingredients = () => {
           <button
             ref={ref}
             disabled={ingredients?.length === data?.length}
-            className='border border-white px-4 py-2 mx-auto flex rounded-lg'
+            className='flex px-4 py-2 mx-auto border border-white rounded-lg'
           ></button>
         )}
       </ul>

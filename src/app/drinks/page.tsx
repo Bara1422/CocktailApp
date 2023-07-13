@@ -58,21 +58,23 @@ const FilterCocktailPage = () => {
 
   const { ref } = useInViewLogic(handleMoreDrinks)
 
-  console.log(drinksFilter)
+  useEffect(() => {
+    setValue('')
+  }, [selected])
 
   if ((isLoading && loading) || !data) {
     return (
-      <Loader2 className='w-4 h-4 animate-spin absolute top-1/2 left-1/2' />
+      <Loader2 className='absolute w-4 h-4 animate-spin top-1/2 left-1/2' />
     )
   }
 
   return (
     <Container>
-      <div className='flex justify-center flex-col items-center'>
-        <h2 className='text-5xl font-semibold pb-10'>Cocktails</h2>
+      <div className='flex flex-col items-center justify-center'>
+        <h2 className='pb-10 text-5xl font-semibold'>Cocktails</h2>
       </div>
       <div className='flex justify-center'>
-        <div className='flex flex-col-reverse md:flex-row  gap-10 '>
+        <div className='flex flex-col-reverse gap-10 md:flex-row '>
           <SelectFilter
             options={formattedCategories}
             value={selected}
@@ -98,11 +100,11 @@ const FilterCocktailPage = () => {
           ref={ref}
           disabled={drinksCategory?.length === data?.length}
           onClick={handleMoreDrinks}
-          className='border border-white px-4 py-2 mx-auto flex rounded-lg'
+          className='flex px-4 py-2 mx-auto border border-white rounded-lg'
         >
           {isLoading ? (
             <span className='flex items-center'>
-              <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+              <Loader2 className='w-4 h-4 mr-2 animate-spin' />
               Load more
             </span>
           ) : (

@@ -1,8 +1,8 @@
 export default function CocktailLoading() {
   return (
-    <div className='flex flex-col items-center py-24  w-2/3 mx-auto p-4'>
-      <h2 className='text-5xl pb-20'>Cocktails found:</h2>
-      <div className='flex flex-wrap gap-20 justify-center'></div>
+    <div className='flex flex-col items-center w-2/3 p-4 py-24 mx-auto'>
+      <h2 className='pb-20 text-5xl'>Cocktails found:</h2>
+      <div className='flex flex-wrap justify-center gap-20'></div>
     </div>
   )
 }

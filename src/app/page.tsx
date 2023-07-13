@@ -11,7 +11,7 @@ export default async function Home() {
   const { ingredients, measures } = getIngredientsAndMeasures(resCocktail)
 
   return (
-    <main className='bg-slate-900 pb-10 '>
+    <main className='pb-10 bg-slate-900 '>
       <div className='container mx-auto max-w-7xl'>
         <SearchCocktail />
 

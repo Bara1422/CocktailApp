@@ -9,8 +9,8 @@ const Alphabet: FC<AlphabetProps> = ({}) => {
 
   return (
     <div className='flex flex-col justify-center gap-4'>
-      <h4 className='text-center text-3xl'>Search cocktail by letter</h4>
-      <div className='flex sm:gap-1 justify-center pb-4 container mx-auto flex-wrap px-4 max-w-6xl '>
+      <h4 className='text-3xl text-center'>Search cocktail by letter</h4>
+      <div className='container flex flex-wrap justify-center max-w-6xl px-4 pb-4 mx-auto sm:gap-1 '>
         {alphabet.map((letter, index) => (
           <>
             <Link

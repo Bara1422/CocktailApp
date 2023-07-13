@@ -17,8 +17,8 @@ const SearchCocktail: FC<SearchCocktailProps> = ({}) => {
     router.push(`/cocktails/${value}`)
   }
   return (
-    <form className='pt-20 pb-6 flex justify-center' onSubmit={handleSubmit}>
-      <div className='flex items-center w-full justify-center gap-1'>
+    <form className='flex justify-center pt-20 pb-6' onSubmit={handleSubmit}>
+      <div className='flex items-center justify-center w-full gap-1'>
         <Input
           placeholder='Search for a Cocktail...'
           className='max-w-prose'

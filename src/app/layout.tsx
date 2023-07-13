@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
 import Alphabet from '@/components/Alphabet'
 import Providers from '@/components/Providers'
+import ScrollToTop from 'react-scroll-to-top'
+import { ArrowBigUp } from 'lucide-react'
 
 const inter = Inter({ subsets: ['latin'] })
 

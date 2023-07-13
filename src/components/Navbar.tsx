@@ -13,25 +13,25 @@ const Navbar: FC<NavbarProps> = ({}) => {
   }
 
   return (
-    <header className='bg-slate-900 text-white w-full container max-w-7xl mx-auto flex justify-between py-4 items-center fixed top-0 right-0 left-0 px-4 border-b border-slate-700 z-50'>
+    <header className='container fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-4 py-4 mx-auto text-white border-b bg-slate-900 max-w-7xl border-slate-700'>
       <Link
         href='/'
-        className='text-white flex text-3xl md:px-0 '
+        className='flex text-3xl text-white md:px-0 '
         onClick={() => nav && toggleMenu()}
       >
         CocktailApp
       </Link>
       <nav aria-label='desktop-menu'>
-        <ul className='md:flex hidden gap-10 '>
-          <li className='hover:underline underline-offset-2'>
+        <ul className='hidden gap-10 text-xl md:flex '>
+          <li className='text-white/80 hover:text-white'>
             <Link href='/' prefetch={false}>
               Home
             </Link>
           </li>
-          <li className='hover:underline underline-offset-2'>
+          <li className='text-white/80 hover:text-white'>
             <Link href='/drinks'>Drinks</Link>
           </li>
-          <li className='hover:underline underline-offset-2'>
+          <li className='text-white/80 hover:text-white'>
             <Link href='/ingredients'>Ingredients</Link>
           </li>
         </ul>

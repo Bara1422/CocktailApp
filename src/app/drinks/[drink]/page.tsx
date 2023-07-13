@@ -20,7 +20,7 @@ const DrinkPage = async ({ params: { drink } }: DrinkProps) => {
 
   return (
     <main className='pt-20'>
-      <div className='container mx-auto max-w-7xl flex flex-col gap-10'>
+      <div className='container flex flex-col gap-10 mx-auto max-w-7xl'>
         <CocktailById
           drinks={drinks}
           ingredients={ingredients}

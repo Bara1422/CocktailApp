@@ -13,13 +13,10 @@ const CocktailPage = async ({ params: { cocktail } }: CocktailProps) => {
   const cocktailDataFetch = getCocktailByName(cocktail)
   const drinks = await cocktailDataFetch
 
-  console.log(cocktail)
-  console.log(drinks)
-
   return (
-    <div className='flex flex-col items-center py-24  w-2/3 mx-auto p-4'>
-      <h2 className='text-5xl pb-20'>Cocktails found:</h2>
-      <ul className='flex flex-wrap gap-20 justify-center'>
+    <div className='flex flex-col items-center w-2/3 p-4 py-24 mx-auto'>
+      <h2 className='pb-20 text-5xl'>Cocktails found:</h2>
+      <ul className='flex flex-wrap justify-center gap-20'>
         {drinks &&
           drinks.map((drink: Cocktail) => {
             const drinkNameWithHyphens = drink.strDrink.replace(/ /g, '-')
@@ -36,7 +33,7 @@ const CocktailPage = async ({ params: { cocktail } }: CocktailProps) => {
                     alt={drink.strDrink}
                     className='rounded-md'
                   />
-                  <h5 className=' text-center pt-1'>{drink.strDrink}</h5>
+                  <h5 className='pt-1 text-center '>{drink.strDrink}</h5>
                 </Link>
               </div>
             )

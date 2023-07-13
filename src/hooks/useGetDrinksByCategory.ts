@@ -14,7 +14,7 @@ const useGetDrinksByCategory = (selected: string) => {
       const { data } = await axios.get(
         `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${selected}`
       )
-      setDrinksCategory(data.drinks.slice(0, 12))
+      setDrinksCategory(data.drinks.slice(0, 20))
       return data.drinks as Drinks[]
     },
     queryKey: ['category', selected],
@@ -27,7 +27,7 @@ const useGetDrinksByCategory = (selected: string) => {
 
       const nextIndex = lastDisplayedIndex + 1
 
-      const nextItems = data.slice(nextIndex, nextIndex + 12)
+      const nextItems = data.slice(nextIndex, nextIndex + 20)
 
       setDrinksCategory((prevItems) => [...prevItems, ...nextItems])
     }
