@@ -1,5 +1,5 @@
 import CocktailById from '@/components/CocktailById'
-import { Cocktail, DailyCocktail } from '@/components/DailyCocktail'
+import { Cocktail } from '@/components/DailyCocktail'
 import SearchCocktail from '@/components/SearchCocktail'
 import { getIngredientsAndMeasures } from '@/lib/getIngredientsAndMeasures'
 import { getRandomCocktail } from '@/lib/getRandomCocktail'
@@ -19,6 +19,7 @@ export default async function Home() {
           drinks={resCocktail}
           ingredients={ingredients}
           measures={measures}
+          title
         />
       </div>
     </main>

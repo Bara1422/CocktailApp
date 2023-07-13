@@ -24,7 +24,7 @@ module.exports = {
       },
       colors: {
         muted: 'hsl(210 40% 96.1%)',
-        background: '#222222',
+        background: 'rgb(15, 15, 15)',
         letters: '#f2f2f2'
       }
     }

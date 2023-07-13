@@ -19,10 +19,13 @@ const CocktailByCategory = ({ drinksCategory, drinksFilter, value }: Props) => {
 
   if (drinksRender.length === 0) {
     return (
-      <p className='flex justify-center items-center py-14 text-2xl w-1/2 mx-auto [text-wrap:balance] text-center'>
-        No cocktails founds with that name in this category. If you want a full
-        search, try in the Search by letter section or try in each category
-        filter.
+      <p className='flex flex-col justify-center items-start py-14 text-2xl w-1/2 mx-auto [text-wrap:balance] '>
+        No cocktails founds with that name in this category.
+        <span className='flex pt-2 just'>
+          {' '}
+          If you want a full search, try in the Search by letter section or try
+          in each category filter.
+        </span>
       </p>
     )
   }
