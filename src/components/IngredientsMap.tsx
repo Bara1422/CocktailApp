@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import Ingredients from '@/app/ingredients/page'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import React from 'react'
 
@@ -28,8 +29,7 @@ const IngredientsMap = ({
             key={item.strIngredient1}
           >
             <Link href={`/ingredients/${ingretientForUrl}`}>
-              <Image
-                priority={true}
+              <img
                 width={150}
                 height={150}
                 alt={`${item.strIngredient1}`}

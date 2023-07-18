@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import { getRandomCocktail } from '@/lib/getRandomCocktail'
 
 export interface Cocktail {
@@ -40,7 +40,7 @@ export const DailyCocktail = async () => {
     <main className='w-full px-4 bg-slate-900 text-letters'>
       <h2 className='py-4 text-5xl text-center border-b'>Random Cocktail</h2>
       <div className='flex flex-col justify-between gap-4 py-4 border-b md:px-4 md:flex-row'>
-        <Image
+        <img
           src={resCocktail.strDrinkThumb}
           alt='Random cocktail'
           width={400}

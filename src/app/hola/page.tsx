@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Container from '@/components/Container'
 import Link from 'next/link'
-import Image from 'next/image'
+
 import getAllIngredients from '@/lib/getAllIngredients'
 
 interface Ingredients {
@@ -24,7 +25,7 @@ const Ingredients = async () => {
               key={item.strIngredient1}
             >
               <Link href={`/ingredients/${ingretientForUrl}`}>
-                <Image
+                <img
                   width={150}
                   height={150}
                   alt={`${item.strIngredient1}`}

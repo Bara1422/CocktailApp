@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { Cocktail } from '@/components/DailyCocktail'
 import { getCocktailByFirstLetter } from '@/lib/getCocktailByFirstLetter'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import React from 'react'
 
@@ -31,7 +32,7 @@ const LetterPage = async ({ params: { letter } }: Props) => {
                   href={`/drinks/${drink.idDrink}-${drinkNameWithHyphens}`}
                   className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100 hover:scale-105 transition-transform duration-300'
                 >
-                  <Image
+                  <img
                     width={200}
                     height={200}
                     src={drink.strDrinkThumb}

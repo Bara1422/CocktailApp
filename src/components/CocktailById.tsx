@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { FC } from 'react'
 import { Cocktail } from './DailyCocktail'
-import Image from 'next/image'
 
 interface CocktailByIdProps {
   drinks: Cocktail
@@ -23,7 +23,7 @@ const CocktailById: FC<CocktailByIdProps> = ({
         ''
       )}
       <div className='flex flex-col justify-between gap-4 py-4 border-b md:px-4 border-slate-700 md:flex-row'>
-        <Image
+        <img
           src={drinks.strDrinkThumb}
           alt='Random cocktail'
           width={400}

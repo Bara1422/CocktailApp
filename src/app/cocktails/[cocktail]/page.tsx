@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { Cocktail } from '@/components/DailyCocktail'
 import { getCocktailByName } from '@/lib/getCocktailByName'
-import Image from 'next/image'
+
 import Link from 'next/link'
 
 interface CocktailProps {
@@ -26,7 +27,7 @@ const CocktailPage = async ({ params: { cocktail } }: CocktailProps) => {
                   href={`/drinks/${drink.idDrink}-${drinkNameWithHyphens}`}
                   className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100'
                 >
-                  <Image
+                  <img
                     width={200}
                     height={200}
                     src={drink.strDrinkThumb}

@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export interface Drinks {
   strDrink: string
@@ -42,7 +42,7 @@ const CocktailByCategory = ({ drinksCategory, drinksFilter, value }: Props) => {
               href={`/drinks/${drink.idDrink}-${drinkNameWithHyphens}`}
               className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100  hover:scale-105 transition-all'
             >
-              <Image
+              <img
                 width={200}
                 height={200}
                 src={drink.strDrinkThumb}

@@ -1,6 +1,4 @@
-import { FC } from 'react'
-
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 
 export interface IngredientProps {
@@ -22,8 +20,7 @@ const IngredientByName = ({ ingredients, ingredient }: Props) => {
       <div className='flex flex-col justify-between gap-4 py-4 border-b md:px-4 md:flex-row'>
         <div className='border-b md:border-none '>
           <h2 className='mb-8 text-5xl text-center'>{ingredientName}</h2>
-          <Image
-            priority={true}
+          <img
             src={`https://www.thecocktaildb.com/images/ingredients/${ingretientForImageUrl}.png`}
             alt={`${ingredient}`}
             width={400}
@@ -46,7 +43,7 @@ const IngredientByName = ({ ingredients, ingredient }: Props) => {
                     href={`/drinks/${ingredient.idDrink}-${drinkNameWithHyphens}`}
                     className='flex flex-col w-[200px] text-slate-400 hover:text-slate-100  hover:scale-105 transition-all'
                   >
-                    <Image
+                    <img
                       width={200}
                       height={200}
                       src={ingredient.strDrinkThumb}
