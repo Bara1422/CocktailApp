@@ -53,7 +53,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
             <Link href='/'>Home</Link>
           </li>
           <li className='py-6 border-b border-slate-500'>
-            <Link href='/cocktails'>Drinks</Link>
+            <Link href='/drinks'>Drinks</Link>
           </li>
           <li className='py-6 '>
             <Link href='/ingredients'>Ingredients</Link>
