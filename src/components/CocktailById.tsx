@@ -54,14 +54,14 @@ const CocktailById: FC<CocktailByIdProps> = ({
             {drinks.strInstructions}
           </p>
 
-          <div className='flex justify-between'>
+          <div className='flex justify-between '>
             <div className='w-1/2'>
               <h5 className='mb-1 text-2xl font-semibold md:text-3xl'>Glass</h5>
               <p className='text-lg text-white/70'>{drinks.strGlass}</p>
             </div>
 
             <div className='w-1/2 text-start'>
-              <h5 className='mb-1 text-3xl font-semibold '>Tags</h5>
+              <h5 className='mb-1 text-2xl font-semibold md:text-3xl'>Tags</h5>
               <p className='flex flex-row flex-wrap gap-1 text-lg text-white/70'>
                 {drinks.strTags?.split(',').map((drink, index, array) => {
                   return (

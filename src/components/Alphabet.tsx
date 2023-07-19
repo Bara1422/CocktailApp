@@ -16,7 +16,7 @@ const Alphabet: FC<AlphabetProps> = ({}) => {
             <Link
               key={letter}
               href={`/cocktails/letter/${letter}`}
-              className=' px-1.5 md:border-2 rounded-md border-transparent hover:border-slate-200 flex bg-transparent dark:bg-transparent  text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent'
+              className=' px-1.5 md:border-2 rounded-md border-transparent hover:border-slate-200 flex bg-transparent text-slate-100 hover:bg-transparent '
             >
               {letter}
             </Link>
