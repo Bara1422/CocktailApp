@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
       </Link>
       <nav aria-label='desktop-menu'>
         <ul className='hidden gap-10 text-xl md:flex '>
-          <li className='text-white/80 hover:text-white'>
+          <li className='text-white/70 hover:text-white'>
             <Link href='/' prefetch={false}>
               Home
             </Link>

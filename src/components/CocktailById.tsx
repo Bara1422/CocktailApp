@@ -18,7 +18,9 @@ const CocktailById: FC<CocktailByIdProps> = ({
   return (
     <div className='w-full px-4 bg-slate-900 text-letters'>
       {title ? (
-        <h2 className='py-4 text-center text-7xl'>Random Cocktail</h2>
+        <h2 className='py-4 text-6xl text-center sm:text-7xl'>
+          Random Cocktail
+        </h2>
       ) : (
         ''
       )}
