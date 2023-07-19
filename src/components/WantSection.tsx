@@ -19,7 +19,7 @@ const WantSection = ({ title, page, text }: Props) => {
       </div>
       <Link
         href={`/${page}`}
-        className='flex items-end justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg md:inline-flex md:w-auto bg-slate-700 focus:ring-4 focus:outline-none hover:bg-slate-600 focus:ring-slate-500'
+        className='flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg md:inline-flex md:w-auto bg-slate-700 focus:ring-4 focus:outline-none hover:bg-slate-600 focus:ring-slate-500'
       >
         Go to {page.toUpperCase()}
         <svg
