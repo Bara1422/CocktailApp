@@ -37,9 +37,9 @@ const CocktailById: FC<CocktailByIdProps> = ({
           <h3 className='mb-2 text-3xl font-bold text-center md:text-4xl'>
             {drinks.strDrink}
           </h3>
-          <h5 className='mb-1 text-2xl font-semibold md:text-3xl'>
+          <h3 className='mb-1 text-2xl font-semibold md:text-3xl'>
             Ingredients:
-          </h5>
+          </h3>
           <ul className='flex flex-col gap-1 pb-3 mb-3 font-medium border-b border-slate-700'>
             {ingredients.map((ingredient, index) => (
               <li key={index} className='text-lg leading-7 text-white/80'>
@@ -49,21 +49,21 @@ const CocktailById: FC<CocktailByIdProps> = ({
             ))}
           </ul>
 
-          <h5 className='mb-1 text-2xl font-semibold md:text-3xl'>
+          <h3 className='mb-1 text-2xl font-semibold md:text-3xl'>
             Instructions:
-          </h5>
+          </h3>
           <p className='border-b border-slate-700 pb-3 mb-3 text-white/80 text-lg [text-wrap:balance] '>
             {drinks.strInstructions}
           </p>
 
           <div className='flex justify-between '>
             <div className='w-1/2'>
-              <h5 className='mb-1 text-2xl font-semibold md:text-3xl'>Glass</h5>
+              <h3 className='mb-1 text-2xl font-semibold md:text-3xl'>Glass</h3>
               <p className='text-lg text-white/70'>{drinks.strGlass}</p>
             </div>
 
             <div className='w-1/2 text-start'>
-              <h5 className='mb-1 text-2xl font-semibold md:text-3xl'>Tags</h5>
+              <h3 className='mb-1 text-2xl font-semibold md:text-3xl'>Tags</h3>
               <p className='flex flex-row flex-wrap gap-1 text-lg text-white/70'>
                 {drinks.strTags?.split(',').map((drink, index, array) => {
                   return (

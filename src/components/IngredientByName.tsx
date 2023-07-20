@@ -30,7 +30,7 @@ const IngredientByName = ({ ingredients, ingredient }: Props) => {
         </div>
 
         <div className='flex flex-col self-end gap-6 md:w-2/3 '>
-          <h5 className='mx-auto mb-1 text-5xl font-semibold '>Cocktails</h5>
+          <h3 className='mx-auto mb-1 text-5xl font-semibold '>Cocktails</h3>
           <ul className='flex flex-wrap justify-center gap-8 pb-3 mb-3'>
             {ingredients.map((ingredient) => {
               const drinkNameWithHyphens = ingredient.strDrink.replace(
