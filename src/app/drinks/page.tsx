@@ -11,6 +11,11 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import SearchFilter from '@/components/SearchFilter'
 import { useInViewLogic } from '@/hooks/useInViewLogic'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Drinks'
+}
 
 export interface strCategory {
   strCategory: string

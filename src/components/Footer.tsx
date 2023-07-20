@@ -9,10 +9,16 @@ const Footer: FC<FooterProps> = ({}) => {
     <footer className='relative bottom-0 flex justify-center w-full py-4 border-t min-h-fit border-slate-700'>
       <div className='flex gap-4'>
         <Link href='https://github.com/Bara1422/CocktailApp'>
-          <Github className='text-slate-300 hover:text-slate-50' />
+          <Github
+            className='text-slate-300 hover:text-slate-50'
+            aria-label='GitHub icon'
+          />
         </Link>
         <Link href='https://www.linkedin.com/in/juan-baranovsky/'>
-          <Linkedin className='text-slate-300 hover:text-slate-50' />
+          <Linkedin
+            className='text-slate-300 hover:text-slate-50'
+            aria-label='LinkedIn icon'
+          />
         </Link>
       </div>
     </footer>

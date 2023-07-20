@@ -34,9 +34,9 @@ const CocktailById: FC<CocktailByIdProps> = ({
         />
 
         <div className='flex flex-col md:w-1/2 '>
-          <h4 className='mb-2 text-3xl font-bold text-center md:text-4xl'>
+          <h3 className='mb-2 text-3xl font-bold text-center md:text-4xl'>
             {drinks.strDrink}
-          </h4>
+          </h3>
           <h5 className='mb-1 text-2xl font-semibold md:text-3xl'>
             Ingredients:
           </h5>

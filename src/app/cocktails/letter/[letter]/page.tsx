@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Cocktail } from '@/components/DailyCocktail'
 import { getCocktailByFirstLetter } from '@/lib/getCocktailByFirstLetter'
+import { Metadata } from 'next'
 
 import Link from 'next/link'
 import React from 'react'
@@ -9,6 +10,10 @@ interface Props {
   params: {
     letter: string
   }
+}
+
+export const metadata: Metadata = {
+  title: 'Drinks'
 }
 
 const LetterPage = async ({ params: { letter } }: Props) => {

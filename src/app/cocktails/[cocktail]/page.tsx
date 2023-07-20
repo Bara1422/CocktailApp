@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Cocktail } from '@/components/DailyCocktail'
 import { getCocktailByName } from '@/lib/getCocktailByName'
-
 import Link from 'next/link'
 
 interface CocktailProps {
