@@ -9,14 +9,9 @@ import Container from '@/components/Container'
 import { useInView } from 'react-intersection-observer'
 import IngredientsFilter from '@/components/IngredientsFilter'
 import IngredientsMap from '@/components/IngredientsMap'
-import { Metadata } from 'next'
 
 interface Ingredients {
   strIngredient1: string
-}
-
-export const metadata: Metadata = {
-  title: 'Ingredients'
 }
 
 const Ingredients = () => {
