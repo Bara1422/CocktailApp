@@ -11,9 +11,9 @@ const WantSection = ({ title, page, text }: Props) => {
   return (
     <div className='flex flex-col max-w-sm p-6 border border-gray-700 rounded-lg shadow bg-slate-800'>
       <div className='flex-grow'>
-        <h5 className='mb-2 text-2xl font-bold tracking-tight text-white/90 '>
+        <h4 className='mb-2 text-2xl font-bold tracking-tight text-white/90 '>
           {title}
-        </h5>
+        </h4>
 
         <p className='mb-3 font-normal text-gray-400'>{text}</p>
       </div>
