@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC } from 'react'
 import { Cocktail } from './DailyCocktail'
+import Link from 'next/link'
 
 interface CocktailByIdProps {
   drinks: Cocktail
@@ -41,12 +42,20 @@ const CocktailById: FC<CocktailByIdProps> = ({
             Ingredients:
           </h3>
           <ul className='flex flex-col gap-1 pb-3 mb-3 font-medium border-b border-slate-700'>
-            {ingredients.map((ingredient, index) => (
-              <li key={index} className='text-lg leading-7 text-white/80'>
-                &bull; {ingredient}{' '}
-                {measures[index] ? `- ${measures[index]}` : ''}
-              </li>
-            ))}
+            {ingredients.map((ingredient, index) => {
+              const ingredientName = ingredient.replace(/ /g, '_')
+              return (
+                <li
+                  key={index}
+                  className='text-lg leading-7 text-white/80 hover:text-white'
+                >
+                  <Link href={`/ingredients/${ingredientName}`}>
+                    &bull; {ingredient}{' '}
+                    {measures[index] ? `- ${measures[index]}` : ''}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
 
           <h3 className='mb-1 text-2xl font-semibold md:text-3xl'>
