@@ -27,7 +27,7 @@ const useGetDrinksByCategory = (selected: string) => {
 
       const nextIndex = lastDisplayedIndex + 1
 
-      const nextItems = data.slice(nextIndex, nextIndex + 20)
+      const nextItems = data.slice(nextIndex, nextIndex + 10)
 
       setDrinksCategory((prevItems) => [...prevItems, ...nextItems])
     }

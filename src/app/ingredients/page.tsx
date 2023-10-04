@@ -37,7 +37,7 @@ const Ingredients = () => {
 
       const nextIndex = lastDisplayedIndex + 1
 
-      const nextItems = data.slice(nextIndex, nextIndex + 15)
+      const nextItems = data.slice(nextIndex, nextIndex + 10)
 
       setIngredients((prevItems) => [...prevItems, ...nextItems])
     }

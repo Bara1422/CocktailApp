@@ -31,7 +31,7 @@ const CocktailByCategory = ({ drinksCategory, drinksFilter, value }: Props) => {
   }
 
   return (
-    <ul className=' md:gap-10 gap-5 grid grid-cols-[repeat(auto-fill,200px)] md:justify-between justify-around  py-10'>
+    <ul className=' md:gap-10 gap-5 grid grid-cols-[repeat(auto-fill,200px)] justify-around  py-10'>
       {drinksRender.map((drink: Drinks) => {
         const drinkNameWithHyphens = drink.strDrink.replace(/[ /]/g, '-')
 
